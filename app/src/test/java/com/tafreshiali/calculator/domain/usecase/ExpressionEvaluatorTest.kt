@@ -8,11 +8,11 @@ import org.junit.Before
 import org.junit.Test
 
 class ExpressionEvaluatorTest {
-    private lateinit var expressionEvaluator: ExpressionEvaluator
+    private lateinit var expressionEvaluator: ExpressionEvaluatorUseCase
 
     @Before
     fun `initialize expression evaluator before running each testcase`() {
-        expressionEvaluator = ExpressionEvaluator()
+        expressionEvaluator = ExpressionEvaluatorUseCase()
     }
 
     @Test

@@ -10,7 +10,7 @@ import com.tafreshiali.calculator.domain.ParenthesesType
  * term :		factor | factor * factor | factor / factor | factor % factor
  * factor : 	number | ( expression ) | + factor | − factor
  */
-class ExpressionEvaluator {
+class ExpressionEvaluatorUseCase {
     operator fun invoke(expression: List<ExpressionPart>): Double = evalExpression(expression).value
 
     private fun evalExpression(expression: List<ExpressionPart>): ExpressionResult {

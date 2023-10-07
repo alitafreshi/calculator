@@ -18,10 +18,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
           check-latest: false
+          cache: gradle
       - name: Print Java Version
         run: javac -version
       - name: Change Wrapper Permissions
-        run: chmod +x ./gradlew
+        run: chmod +x gradlew
       - name: Run Debug Test
         run: ./gradlew testDebugUnitTest --continue
       - name: Upload Test Reports

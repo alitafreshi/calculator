@@ -1,9 +1,8 @@
-name: build-and-test
+name: Development Build And Test Workflow
 on:
   pull_request:
     branches: [ "dev" ]
-    tags:
-      - 'v*'
+
 jobs:
   local_test_job:
     name: running-local-unit-tests
@@ -31,5 +30,7 @@ jobs:
         with:
           name: test-reports
           path: '**/build/reports/tests/'
+      - name: Build with Gradle
+        run: ./gradlew build
 
 

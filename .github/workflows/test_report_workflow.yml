@@ -8,6 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Change Wrapper Permissions
+        run: chmod +x gradlew
       - name: Run Debug Test
         run: ./gradlew testDebugUnitTest --continue
       - name: Upload Test Reports

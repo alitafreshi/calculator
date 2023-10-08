@@ -1,0 +1,12 @@
+name: Grant Gradlew Permission
+on:
+  workflow_call:
+
+jobs:
+  grant_gradlew_permission_job:
+    name: grant gradlew permission to run gradle tasks
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Change Wrapper Permissions
+        run: chmod +x gradlew

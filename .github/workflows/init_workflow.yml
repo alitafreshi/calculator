@@ -1,7 +1,7 @@
 name: Init WorkFlow
 on:
-  pull_request:
-    branches: [ "master" , "dev" ]
+  workflow_call:
+
 jobs:
   init_job:
     name: running initializing tasks
@@ -19,5 +19,3 @@ jobs:
           cache: gradle
       - name: Print Java Version
         run: javac -version
-      - name: Change Wrapper Permissions
-        run: chmod +x gradlew

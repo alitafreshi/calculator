@@ -12,11 +12,14 @@ jobs:
     name: run local unit test cases and export the test report
     uses: ./.github/workflows/test_report_workflow.yml
     needs: base_setup_job
+
   build_project_job:
     name: build the project
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
+      - name: grant gradlew permission
+        uses: ./.github/workflows/gradlew_permission.yml
       - name: Build with Gradle
         run: ./gradlew build
     needs:

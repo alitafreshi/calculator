@@ -1,7 +1,6 @@
 name: run tests and upload test report
 on:
-  pull_request:
-    branches: [ "master" , "dev" ]
+  workflow_call:
 
 jobs:
   run_unit_test_job:
@@ -9,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
+      - name: grant gradlew permission
+        uses:  ./.github/workflows/gradlew_permission.yml
       - name: Run Debug Test
         run: ./gradlew testDebugUnitTest --continue
       - name: Upload Test Reports

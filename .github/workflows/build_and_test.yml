@@ -6,10 +6,11 @@ on:
 jobs:
   base_setup_job:
     name: init base setup
-    uses: ../../.github/workflows/init_workflow.yml
+    uses: ./.github/workflows/init_workflow.yml
+
   test_report_artifact_job:
     name: run local unit test cases and export the test report
-    uses: ../../.github/workflows/test_report_workflow.yml
+    uses: ./.github/workflows/test_report_workflow.yml
     needs: base_setup_job
   build_project_job:
     name: build the project

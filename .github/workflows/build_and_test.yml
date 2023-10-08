@@ -18,8 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
-      - name: grant gradlew permission
-        uses: ./.github/workflows/gradlew_permission.yml
       - name: Build with Gradle
         run: ./gradlew build
     needs:

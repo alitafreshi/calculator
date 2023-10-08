@@ -19,3 +19,5 @@ jobs:
           cache: gradle
       - name: Print Java Version
         run: javac -version
+      - name: Change Wrapper Permissions
+        run: chmod +x gradlew

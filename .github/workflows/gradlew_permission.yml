@@ -6,7 +6,6 @@ jobs:
   grant_gradlew_permission_job:
     name: grant gradlew permission to run gradle tasks
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - name: Checkout
         uses: actions/checkout@v3

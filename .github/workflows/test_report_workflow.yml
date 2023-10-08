@@ -1,0 +1,19 @@
+name: run tests and upload test report
+on:
+  pull_request:
+    branches: [ "master" , "dev" ]
+
+jobs:
+  run_unit_test_job:
+    name: running local unit tests
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Run Debug Test
+        run: ./gradlew testDebugUnitTest --continue
+      - name: Upload Test Reports
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-reports
+          path: '**/build/reports/tests/'

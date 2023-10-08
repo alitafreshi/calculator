@@ -1,8 +1,0 @@
-name: Build with Gradle
-runs-on: ubuntu-latest
-needs: run_debug_test_job
-steps:
-  - name: Checkout
-    uses: actions/checkout@v3
-  - name: Build with Gradle
-    run: ./gradlew build

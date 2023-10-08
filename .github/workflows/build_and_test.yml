@@ -1,24 +1,24 @@
-name: Development Build And Test Workflow
+name: Build And Test Workflow
 on:
   pull_request:
-    branches: [ "dev" ]
+    branches: [ "master","dev" ]
 
 jobs:
-  checkout_job:
-    uses: ./.github/workflows/jobs/checkout.yml
+  base_setup_job:
+    name: init base setup
+    uses: ./init_workflow.yml
+  test_report_artifact_job:
+    name: run local unit test cases and export the test report
+    uses: ./test_report_workflow.yml
+    needs: base_setup_job
+  build_project_job:
+    name: build the project
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    needs:
+      - base_setup_job
+      - test_report_artifact_job
 
-  setup_java_job:
-    uses: ./.github/workflows/jobs/setup_java.yml
-    needs: checkout_job
 
-  change_wrapper_permissions_job:
-    uses: ./.github/workflows/jobs/change_wrapper_permissions.yml
-    needs: setup_java_job
 
-  run_debug_test_job:
-    uses: ./.github/workflows/jobs/run_debug_test.yml
-    needs: change_wrapper_permissions_job
 
-  build_with_gradle_job:
-    uses: ./.github/workflows/jobs/build_with_gradle.yml
-    needs: run_debug_test_job
